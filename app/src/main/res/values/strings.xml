@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MovieDBApplication</string>
+    <string name="label_upcoming_movies">Upcoming Movies</string>
+    <string name="label_top_rated">Top Rated Movies</string>
+    <string name="label_popular_movies">Popular Movies</string>
+    <string name="movie_title">Movie Title 1</string>
+    <string name="tmdb_api_key">4815e621a737b09be00a36f1152532e8</string>
+</resources>
