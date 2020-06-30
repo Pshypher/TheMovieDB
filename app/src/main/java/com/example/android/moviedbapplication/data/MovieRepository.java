@@ -2,6 +2,7 @@ package com.example.android.moviedbapplication.data;
 
 import android.util.Log;
 
+import com.example.android.moviedbapplication.interfaces.Categorizable;
 import com.example.android.moviedbapplication.tmdbapi.TmdbApiService;
 import com.example.android.moviedbapplication.interfaces.Repository;
 import com.example.android.moviedbapplication.root.MoviesDatabase;
@@ -55,7 +56,7 @@ public class MovieRepository implements Repository {
                 "top_rated"
         );
 
-        Observable<Object> responseObservable = requestsObservable.map(service::getMovies);
+        Observable<Categorizable> responseObservable = requestsObservable.flatMap(service::getMovies);
 
         return responseObservable
                 .map(NetworkParsingUtils::parse)

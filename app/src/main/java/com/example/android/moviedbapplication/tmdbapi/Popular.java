@@ -3,10 +3,11 @@ package com.example.android.moviedbapplication.tmdbapi;
 
 import java.util.List;
 
+import com.example.android.moviedbapplication.interfaces.Categorizable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Popular {
+public class Popular implements Categorizable {
 
     @SerializedName("page")
     @Expose
@@ -45,6 +46,7 @@ public class Popular {
         this.totalPages = totalPages;
     }
 
+    @Override
     public List<Result> getResults() {
         return results;
     }

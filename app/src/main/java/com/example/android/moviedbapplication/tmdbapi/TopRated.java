@@ -1,15 +1,13 @@
 
 package com.example.android.moviedbapplication.tmdbapi;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.example.android.moviedbapplication.data.Movie;
-
+import com.example.android.moviedbapplication.interfaces.Categorizable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TopRated {
+public class TopRated implements Categorizable {
 
     @SerializedName("page")
     @Expose
@@ -48,6 +46,7 @@ public class TopRated {
         this.totalPages = totalPages;
     }
 
+    @Override
     public List<Result> getResults() {
         return results;
     }

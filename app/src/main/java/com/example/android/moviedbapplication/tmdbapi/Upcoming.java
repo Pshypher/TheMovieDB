@@ -2,10 +2,11 @@ package com.example.android.moviedbapplication.tmdbapi;
 
 import java.util.List;
 
+import com.example.android.moviedbapplication.interfaces.Categorizable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Upcoming {
+public class Upcoming implements Categorizable {
 
     @SerializedName("results")
     @Expose
@@ -23,6 +24,7 @@ public class Upcoming {
     @Expose
     private Integer totalPages;
 
+    @Override
     public List<Result> getResults() {
         return results;
     }

@@ -1,10 +1,10 @@
 package com.example.android.moviedbapplication.utilities;
 
 import com.example.android.moviedbapplication.data.Movie;
-import com.example.android.moviedbapplication.tmdbapi.Popular;
-import com.example.android.moviedbapplication.tmdbapi.TopRated;
-import com.example.android.moviedbapplication.tmdbapi.Upcoming;
+import com.example.android.moviedbapplication.interfaces.Categorizable;
+import com.example.android.moviedbapplication.tmdbapi.Result;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NetworkParsingUtils {
@@ -13,16 +13,13 @@ public class NetworkParsingUtils {
 
     }
 
-    public static List<Movie> parse(Object response) {
-        List<Movie> movies;
-        if (response instanceof Popular) {
-            movies = ((Popular) response).parse();
-        } else if (response instanceof TopRated) {
-            movies = ((TopRated) response).parse();
-        } else if (response instanceof Upcoming) {
-            movies = ((Upcoming) response).parse();
-        } else {
-            throw new IllegalArgumentException("Unknown category: " + response);
+    public static List<Movie> parse(Categorizable response) {
+        List<Result> results = response.getResults();
+        List<Movie> movies = new ArrayList<>();
+        for (Result r : results) {
+            String className = response.getClass().getName();
+            Movie m = new Movie(r.getId(), r.getTitle(), className);
+            movies.add(m);
         }
 
         return movies;
