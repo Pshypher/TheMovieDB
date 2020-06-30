@@ -1,5 +1,5 @@
 
-package com.example.android.moviedbapplication.tmdbapi.upcoming;
+package com.example.android.moviedbapplication.tmdbapi;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

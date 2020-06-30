@@ -1,5 +1,5 @@
 
-package com.example.android.moviedbapplication.tmdbapi.toprated;
+package com.example.android.moviedbapplication.tmdbapi;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
@@ -10,24 +10,24 @@ public class Result {
     @SerializedName("popularity")
     @Expose
     private Double popularity;
-    @SerializedName("vote_count")
-    @Expose
-    private Integer voteCount;
-    @SerializedName("video")
-    @Expose
-    private Boolean video;
-    @SerializedName("poster_path")
-    @Expose
-    private String posterPath;
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("adult")
+    @SerializedName("video")
     @Expose
-    private Boolean adult;
-    @SerializedName("backdrop_path")
+    private Boolean video;
+    @SerializedName("vote_count")
     @Expose
-    private String backdropPath;
+    private Integer voteCount;
+    @SerializedName("vote_average")
+    @Expose
+    private Double voteAverage;
+    @SerializedName("title")
+    @Expose
+    private String title;
+    @SerializedName("release_date")
+    @Expose
+    private String releaseDate;
     @SerializedName("original_language")
     @Expose
     private String originalLanguage;
@@ -37,18 +37,18 @@ public class Result {
     @SerializedName("genre_ids")
     @Expose
     private List<Integer> genreIds = null;
-    @SerializedName("title")
+    @SerializedName("backdrop_path")
     @Expose
-    private String title;
-    @SerializedName("vote_average")
+    private String backdropPath;
+    @SerializedName("adult")
     @Expose
-    private Double voteAverage;
+    private Boolean adult;
     @SerializedName("overview")
     @Expose
     private String overview;
-    @SerializedName("release_date")
+    @SerializedName("poster_path")
     @Expose
-    private String releaseDate;
+    private String posterPath;
 
     public Double getPopularity() {
         return popularity;
@@ -56,30 +56,6 @@ public class Result {
 
     public void setPopularity(Double popularity) {
         this.popularity = popularity;
-    }
-
-    public Integer getVoteCount() {
-        return voteCount;
-    }
-
-    public void setVoteCount(Integer voteCount) {
-        this.voteCount = voteCount;
-    }
-
-    public Boolean getVideo() {
-        return video;
-    }
-
-    public void setVideo(Boolean video) {
-        this.video = video;
-    }
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
     }
 
     public Integer getId() {
@@ -90,20 +66,44 @@ public class Result {
         this.id = id;
     }
 
-    public Boolean getAdult() {
-        return adult;
+    public Boolean getVideo() {
+        return video;
     }
 
-    public void setAdult(Boolean adult) {
-        this.adult = adult;
+    public void setVideo(Boolean video) {
+        this.video = video;
     }
 
-    public String getBackdropPath() {
-        return backdropPath;
+    public Integer getVoteCount() {
+        return voteCount;
     }
 
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
+    public void setVoteCount(Integer voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public Double getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(Double voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getOriginalLanguage() {
@@ -130,20 +130,20 @@ public class Result {
         this.genreIds = genreIds;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 
-    public Double getVoteAverage() {
-        return voteAverage;
+    public Boolean getAdult() {
+        return adult;
     }
 
-    public void setVoteAverage(Double voteAverage) {
-        this.voteAverage = voteAverage;
+    public void setAdult(Boolean adult) {
+        this.adult = adult;
     }
 
     public String getOverview() {
@@ -154,12 +154,12 @@ public class Result {
         this.overview = overview;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
 }

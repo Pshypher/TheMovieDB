@@ -1,10 +1,7 @@
+package com.example.android.moviedbapplication.tmdbapi;
 
-package com.example.android.moviedbapplication.tmdbapi.upcoming;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import com.example.android.moviedbapplication.data.Movie;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -25,16 +22,6 @@ public class Upcoming {
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
-
-    public List<Movie> parse() {
-        ArrayList<Movie> movies = new ArrayList<>();
-        for (Result result : results) {
-            long id = result.getId();
-            String title = result.getTitle();
-            movies.add(new Movie(id, title, getClass().getName()));
-        }
-        return movies;
-    }
 
     public List<Result> getResults() {
         return results;

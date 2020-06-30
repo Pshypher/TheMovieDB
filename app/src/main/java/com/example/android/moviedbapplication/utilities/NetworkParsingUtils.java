@@ -1,9 +1,9 @@
 package com.example.android.moviedbapplication.utilities;
 
 import com.example.android.moviedbapplication.data.Movie;
-import com.example.android.moviedbapplication.tmdbapi.popular.Popular;
-import com.example.android.moviedbapplication.tmdbapi.toprated.TopRated;
-import com.example.android.moviedbapplication.tmdbapi.upcoming.Upcoming;
+import com.example.android.moviedbapplication.tmdbapi.Popular;
+import com.example.android.moviedbapplication.tmdbapi.TopRated;
+import com.example.android.moviedbapplication.tmdbapi.Upcoming;
 
 import java.util.List;
 

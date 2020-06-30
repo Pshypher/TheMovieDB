@@ -1,14 +1,12 @@
 
-package com.example.android.moviedbapplication.tmdbapi.toprated;
+package com.example.android.moviedbapplication.tmdbapi;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.example.android.moviedbapplication.data.Movie;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TopRated {
+public class Popular {
 
     @SerializedName("page")
     @Expose
@@ -22,16 +20,6 @@ public class TopRated {
     @SerializedName("results")
     @Expose
     private List<Result> results = null;
-
-    public List<Movie> parse() {
-        ArrayList<Movie> movies = new ArrayList<>();
-        for (Result result : results) {
-            long id = result.getId();
-            String title = result.getTitle();
-            movies.add(new Movie(id, title, getClass().getName()));
-        }
-        return movies;
-    }
 
     public Integer getPage() {
         return page;
