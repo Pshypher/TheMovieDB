@@ -2,13 +2,14 @@ package com.example.android.moviedbapplication.data;
 
 import android.util.Log;
 
-import com.example.android.moviedbapplication.interfaces.Categorizable;
+import com.example.android.moviedbapplication.tmdbapi.Response;
 import com.example.android.moviedbapplication.tmdbapi.TmdbApiService;
 import com.example.android.moviedbapplication.interfaces.Repository;
 import com.example.android.moviedbapplication.root.MoviesDatabase;
-import com.example.android.moviedbapplication.utilities.NetworkParsingUtils;
+import com.example.android.moviedbapplication.utilities.NetworkUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -50,16 +51,22 @@ public class MovieRepository implements Repository {
 
     public Observable<Movie> queryRemoteRepository() {
 
-        Observable<String> requestsObservable = Observable.just(
-                "popular",
-                "upcoming",
-                "top_rated"
-        );
+        Observable<String> requestsObservable = Observable.just("popular", "upcoming", "top_rated");
 
-        Observable<Categorizable> responseObservable = requestsObservable.flatMap(service::getMovies);
+        Observable<HashMap<String, Response>> responseObservable =
+                requestsObservable
+                        .flatMap(key -> service.getMovies(key)
+                                .map(res -> NetworkUtils.tag(key, res)));
 
-        return responseObservable
-                .map(NetworkParsingUtils::parse)
+        Observable<HashMap<String, Response>> reducedObservable =
+                responseObservable.reduce((a, b) -> {
+                    HashMap<String, Response> c = new HashMap<>();
+                    for (String key : a.keySet()) { c.put(key, a.get(key)); }
+                    for (String key : b.keySet()) { c.put(key, b.get(key)); }
+                    return c;
+                }).toObservable();
+
+        return reducedObservable.map(NetworkUtils::parse)
                 .flatMap(Observable::fromIterable)
                 .doOnNext(movie -> {
                     Log.d(TAG, "queryRemoteRepository: " + movie);
